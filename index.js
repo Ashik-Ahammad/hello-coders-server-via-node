@@ -39,7 +39,7 @@ run().catch(console.dir);
 
 
 app.get('/',(req,res) => {
-    res.send('Hello Coders Server is running');
+    res.send('Hello Coders Server is running now');
 });
 
 app.listen(port,() => {

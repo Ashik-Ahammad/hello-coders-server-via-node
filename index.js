@@ -22,12 +22,28 @@ async function run() {
         await client.connect();
         const database = client.db('hello_coders');
         const memberCollection = database.collection('members');
+        const serviceCollection = database.collection('services');
+        const courseCollection = database.collection('courses');
 
         //GET TEAM MEMBER API
         app.get('/members', async(req,res) => {
             const cursor = memberCollection.find({});
             const members = await cursor.toArray();
             res.send(members);
+        })
+
+        //GET SERVICES API
+        app.get('/services', async(req,res) => {
+            const cursor = serviceCollection.find({});
+            const services = await cursor.toArray();
+            res.send(services);
+        })
+
+        //GET COURSES API
+        app.get('/courses', async(req,res) => {
+            const cursor = courseCollection.find({});
+            const courses = await cursor.toArray();
+            res.send(courses);
         })
     }
     finally{

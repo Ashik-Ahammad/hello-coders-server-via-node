@@ -24,6 +24,7 @@ async function run() {
         const memberCollection = database.collection('members');
         const serviceCollection = database.collection('services');
         const courseCollection = database.collection('courses');
+        const orderCollection = database.collection('orders');
 
         //GET TEAM MEMBER API
         app.get('/members', async(req,res) => {
@@ -44,7 +45,17 @@ async function run() {
             const cursor = courseCollection.find({});
             const courses = await cursor.toArray();
             res.send(courses);
+        });
+
+        
+
+        // Post or Add orders API
+        app.post('/orders',async(req,res) => {
+            const order = req.body;
+            const result = await orderCollection.insertOne(order);
+            res.json(result);
         })
+
     }
     finally{
         // await client.close();

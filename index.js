@@ -25,6 +25,7 @@ async function run() {
         const serviceCollection = database.collection('services');
         const courseCollection = database.collection('courses');
         const orderCollection = database.collection('orders');
+        const feedbackCollection = database.collection('feedbacks');
 
         //GET TEAM MEMBER API
         app.get('/members', async(req,res) => {
@@ -54,7 +55,16 @@ async function run() {
             const order = req.body;
             const result = await orderCollection.insertOne(order);
             res.json(result);
-        })
+        });
+
+        // Post or Add Feedback API
+        app.post('/feedbacks',async(req,res) => {
+            const feedback = req.body;
+            const result = await feedbackCollection.insertOne(feedback);
+            res.json(result);
+        });
+
+
 
     }
     finally{

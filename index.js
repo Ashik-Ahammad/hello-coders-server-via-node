@@ -32,14 +32,14 @@ async function run() {
             const cursor = memberCollection.find({});
             const members = await cursor.toArray();
             res.send(members);
-        })
+        });
 
         //GET SERVICES API
         app.get('/services', async(req,res) => {
             const cursor = serviceCollection.find({});
             const services = await cursor.toArray();
             res.send(services);
-        })
+        });
 
         //GET COURSES API
         app.get('/courses', async(req,res) => {
@@ -51,12 +51,11 @@ async function run() {
         // GET Orders API
         app.get('/orders', async (req, res) => {
             const email = req.query.email;
-            const query = {email: email};
+            const query = { email: email };
             const cursor = orderCollection.find(query);
-            console.log(query)
             const orders = await cursor.toArray();
             res.json(orders);
-        })
+        });
 
 
         // Post or Add orders API

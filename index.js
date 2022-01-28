@@ -26,6 +26,8 @@ async function run() {
         const courseCollection = database.collection('courses');
         const orderCollection = database.collection('orders');
         const feedbackCollection = database.collection('feedbacks');
+        const userCollection = database.collection('users');
+
 
         //GET TEAM MEMBER API
         app.get('/members', async(req,res) => {
@@ -69,6 +71,13 @@ async function run() {
         app.post('/feedbacks',async(req,res) => {
             const feedback = req.body;
             const result = await feedbackCollection.insertOne(feedback);
+            res.json(result);
+        });
+
+        // Post USERs API
+        app.post('/users',async(req,res) => {
+            const user = req.body;
+            const result = await userCollection.insertOne(user);
             res.json(result);
         });
 

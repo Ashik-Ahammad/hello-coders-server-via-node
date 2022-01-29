@@ -125,6 +125,13 @@ async function run() {
             res.json(result);
         });
 
+        // POST COURSES FROM ADMIN
+        app.post('/courses',async(req,res) => {
+            const course = req.body;
+            const result = await courseCollection.insertOne(course);
+            res.json(result);
+        });
+
         // 
         app.put('/users', async(req,res) => {
             const user = req.body;

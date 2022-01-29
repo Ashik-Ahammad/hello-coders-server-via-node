@@ -82,6 +82,13 @@ async function run() {
             res.json(orders);
         });
 
+        // GET Feedback API
+        app.get('/feedbacks', async (req, res) => {    
+            const cursor = feedbackCollection.find({});
+            const feedbacks = await cursor.toArray();
+            res.json(feedbacks);
+        });
+
         // GET users email
         app.get('/users/:email', async(req, res) => {
             const email = req.params.email;

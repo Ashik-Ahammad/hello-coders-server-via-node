@@ -118,6 +118,13 @@ async function run() {
             res.json(result);
         });
 
+        // POST SERVICES FROM ADMIN
+        app.post('/services',async(req,res) => {
+            const service = req.body;
+            const result = await serviceCollection.insertOne(service);
+            res.json(result);
+        });
+
         // 
         app.put('/users', async(req,res) => {
             const user = req.body;
